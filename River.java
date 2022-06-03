@@ -1,51 +1,63 @@
+import java.util.Scanner;
+
+
 public class River
 {
-    
-    private boolean fish;
 
-    public River(int w, int l, double sp, boolean f)
-    {
-        fish = f;
-        
-    }
 
-    public static void main(String[] args) 
+    public static int setWidth()
     {
-      River river1 = new River();
-      river1.getLength(length);
-      river1.getWidth(width);
-      river1.getSpeed(speed);
-      river1.isFish();
-    }
+        Scanner scanner = new Scanner(System.in);
 
-    public int getWidth(int width)
-    {
-        System.out.print("the river is " + width + " feet wide, ");
+        System.out.println("how wide do you want your the river?");
+        int width = scanner.nextInt();
         return width;
     }
 
-    public int getLength(int length)
+    public static int getLength()
     {
-        System.out.print(length + " feet long, ");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("how long do you want the river to be?");
+        int length = scanner.nextInt();
         return length;
     }
 
-    public double getSpeed(double speed)
+    public static int getSpeed()
     {
-        System.out.print("is moving at " + speed + " mph, ");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("how fast is your river traveling?");
+        int speed = scanner.nextInt();
         return speed;
     }
 
-    public String isFish()
+    public static boolean isFish()
     {
-        if(fish == true)
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Are there fish in your river, type yes or no");
+        String answer = scanner.nextLine();
+        boolean fishYN = false;
+        if(answer.equalsIgnoreCase("yes"))
         {
-            System.out.print("and there are fish in the river");
+            fishYN = true;
         }
-        else
+
+        if(answer.equalsIgnoreCase("no"))
         {
-            System.out.print("and there are no fish in the river");
+            fishYN = false;
         }
-        return null;
+
+        return fishYN;
+    }
+
+    public static void main(String[] args)
+    {
+        int width = setWidth();
+        int length = getLength();
+        int speed = getSpeed();
+        boolean fishYN = isFish();
+        System.out.println("the river is " + width + " feet wide, and is " + length + " miles long. The river is also traveling at " + speed + "Miles per hour and it is " + fishYN + " that there are fish in the river.");
     }
 }
